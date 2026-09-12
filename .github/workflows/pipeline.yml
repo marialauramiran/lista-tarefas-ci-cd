@@ -1,0 +1,23 @@
+name: Pipeline CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  teste:
+    name: Executar testes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Executar testes
+        run: npm test
