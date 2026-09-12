@@ -3,7 +3,7 @@ function validarTarefa(tarefa) {
 }
 
 // Teste 1: tarefa válida
-if (!validarTarefa("Estudar GitHub Actions")) {
+if (!validarTarefa("")) {
     throw new Error("Teste falhou: uma tarefa válida foi rejeitada.");
 }
 
