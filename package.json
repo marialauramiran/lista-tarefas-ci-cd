@@ -1,0 +1,9 @@
+{
+  "name": "lista-tarefas-cicd",
+  "version": "1.0.0",
+  "description": "Aplicação de lista de tarefas com pipeline CI/CD",
+  "main": "script.js",
+  "scripts": {
+    "test": "node test.js"
+  }
+}
