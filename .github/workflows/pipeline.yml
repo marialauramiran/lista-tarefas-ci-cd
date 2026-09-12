@@ -5,7 +5,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
+
   teste:
     name: Executar testes
     runs-on: ubuntu-latest
@@ -21,3 +27,29 @@ jobs:
 
       - name: Executar testes
         run: npm test
+
+
+  deploy:
+    name: Publicar no GitHub Pages
+    needs: teste
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Fazer upload do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar site
+        id: deployment
+        uses: actions/deploy-pages@v4
